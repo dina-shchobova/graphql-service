@@ -12,11 +12,11 @@ type Track {
     genres: [Genre]
 }
 
-type Query {
+extend type Query {
     tracks: [Track]
     track(id: ID!): Track
 }
 
 `;
 
-module.exports = typeDefs;
+export { typeDefs };

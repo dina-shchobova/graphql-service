@@ -13,11 +13,11 @@ type Album {
     image: String
 }
 
-type Query {
+extend type Query {
     albums: [Album]
     album(id: ID!): Album
 }
 
 `;
 
-module.exports = typeDefs;
+export { typeDefs };

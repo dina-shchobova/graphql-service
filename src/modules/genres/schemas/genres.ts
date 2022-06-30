@@ -10,11 +10,11 @@ type Genre {
     year: Int
 }
 
-type Query {
+extend type Query {
     genres: [Genre]
     genre(id: ID!): Genre
 }
 
 `;
 
-module.exports = typeDefs;
+export { typeDefs };

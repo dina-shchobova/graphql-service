@@ -14,11 +14,11 @@ type Artist {
     instruments: String
 }
 
-type Query {
+extend type Query {
     artists: [Artist]
     artist(id: ID!): Artist
 }
 
 `;
 
-module.exports = typeDefs;
+export { typeDefs };

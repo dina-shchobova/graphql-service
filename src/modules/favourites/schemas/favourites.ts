@@ -12,10 +12,10 @@ type Favourites {
 }
 
 # TODO: only for logged in user
-type Query {
+extend type Query {
     favourites: Favourites
 }
 
 `;
 
-module.exports = typeDefs;
+export { typeDefs };

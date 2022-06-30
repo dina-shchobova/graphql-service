@@ -11,11 +11,17 @@ type Band {
     genres: [Genre]
 }
 
-type Query {
+type Member {
+    artist: String
+    instrument: String
+    years: String
+}
+
+extend type Query {
     bands: [Band]
     band(id: ID!): Band
 }
 
 `;
 
-module.exports = typeDefs;
+export { typeDefs };

@@ -14,11 +14,15 @@ type User {
     email: String!
 }
 
-type Query {
+extend type Query {
     user(id: ID!): User
     jwt(email: String!, password: String!): JWT
 }
 
+#extend type Mutation {
+#    
+#}
+
 `;
 
-module.exports = typeDefs;
+export { typeDefs };
