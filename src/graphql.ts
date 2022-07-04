@@ -14,4 +14,4 @@ const Query = gql`
 
 const  typeDefs = [Query, Users, Albums, Artists, Bands, Favourites, Genres, Tracks];
 
-export default typeDefs;
+export { typeDefs };
