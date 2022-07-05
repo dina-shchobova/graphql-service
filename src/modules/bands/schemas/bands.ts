@@ -17,9 +17,41 @@ type Member {
     years: String
 }
 
+type BandsResult {
+    items: [Band],
+    total: Int,
+    limit: Int,
+    offset: Int,
+}
+
 extend type Query {
-    bands: [Band]
-    band(id: ID!): Band
+    bands: BandsResult,
+    band(id: ID!): Band,
+}
+
+input MemberInput {
+    artist: String
+    instrument: String
+    years: String
+}
+
+input CreateBandInput {
+    name: String!
+    origin: String
+    members: [MemberInput]
+    website: String
+    genresIds: [String]
+}
+
+type CreateBandResponse {
+    code: Int!
+    success: Boolean!
+    message: String!
+    bands: Band
+}
+
+extend type Mutation {
+    createBand(createBandInput: CreateBandInput): CreateBandResponse!
 }
 
 `;
