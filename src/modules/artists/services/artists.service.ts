@@ -23,14 +23,6 @@ class ArtistsService extends RESTDataSource {
       console.log(e);
     }
   }
-
-  async createArtist(createArtistInput) {
-    try {
-      return await this.post(``, createArtistInput)
-    } catch (e) {
-      console.log(e);
-    }
-  }
 }
 
 export { ArtistsService };

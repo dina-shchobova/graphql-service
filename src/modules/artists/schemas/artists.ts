@@ -10,7 +10,7 @@ type Artist {
     birthDate: String
     birthPlace: String
     country: String
-    bands: [ID]
+    bands: [Band]
     instruments: [String]
 }
 
@@ -24,29 +24,6 @@ type ArtistResult {
 extend type Query {
     artists: ArtistResult,
     artist(id: ID!): Artist,
-}
-
-input CreateArtistInput {
-    id: ID!
-    firstName: String
-    secondName: String
-    middleName: String
-    birthDate: String
-    birthPlace: String
-    country: String
-    bands: [ID]
-    instruments: [String]
-}
-
-type CreateArtistResponse {
-    code: Int!
-    success: Boolean!
-    message: String!
-    artist: Artist
-}
-
-extend type Mutation {
-    createArtist(createArtistInput: CreateArtistInput): CreateArtistResponse!
 }
 
 `;

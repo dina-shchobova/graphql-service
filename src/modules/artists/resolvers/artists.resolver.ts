@@ -10,30 +10,14 @@ const artistsResolver = {
 
   Artist: {
     id: (parent) => parent._id,
-    bands: (parent) => parent.bandsId,
-  },
-
-  Mutation: {
-    createArtist: (_, createArtistInput, { dataSources }) => {
-      try {
-        const data = dataSources.artistsService.createArtist(createArtistInput);
-        console.log(data)
-        return {
-          code: 200,
-          success: true,
-          message: "Artist successfully created",
-          artists: data.artists,
-        }
-      } catch (e) {
-        return {
-          code: e.extension.response.status,
-          success: false,
-          message: e.extension.response.body,
-          artists: null,
-        }
-      }
+    bands: ({ bandsIds }, _, { dataSources }) => {
+        const bands = [];
+        bandsIds.forEach((id) => {
+          bands.push(dataSources.bandsService.getBand(id));
+        })
+        return bands;
     }
-  }
+  },
 }
 
 export { artistsResolver };
