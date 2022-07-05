@@ -1,10 +1,6 @@
 import { gql } from 'apollo-server';
 
 const typeDefs = gql`
-
-type JWT {
-    jwt: String!
-}    
     
 type User {
     id: ID!
@@ -16,7 +12,7 @@ type User {
 
 extend type Query {
     user(id: ID!): User
-    jwt(email: String!, password: String!): JWT
+    jwt(email: String!, password: String!): String!
 }
 
 input RegisterUserInput {

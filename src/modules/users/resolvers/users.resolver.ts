@@ -2,6 +2,9 @@ const usersResolver = {
   Query: {
     user: (_, {id}, {dataSources}) => {
       return dataSources.usersService.getUser(id);
+    },
+    jwt: (_, {email, password}, {dataSources}) => {
+      return dataSources.usersService.getJWT(email, password);
     }
   },
 

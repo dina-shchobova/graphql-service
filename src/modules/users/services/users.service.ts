@@ -13,9 +13,18 @@ class UsersService extends RESTDataSource {
 
   async getUser(id: string) {
     try {
-      const userData = await this.get(`/${id}`);
-      console.log('this is userData', userData);
-      return userData;
+      return await this.get(`/${id}`);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async getJWT(email: string, password: string) {
+    try {
+       const res = await this.post(`/login`, {
+        email, password
+      });
+       return res.jwt;
     } catch (e) {
       console.log(e);
     }
