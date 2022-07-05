@@ -14,15 +14,8 @@ type Artist {
     instruments: [String]
 }
 
-type ArtistResult {
-    items: [Artist],
-    limit: Int,
-    offset: Int,
-    total: Int,
-}
-
 extend type Query {
-    artists: ArtistResult,
+    artists: [Artist],
     artist(id: ID!): Artist,
 }
 

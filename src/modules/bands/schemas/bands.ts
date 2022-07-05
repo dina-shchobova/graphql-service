@@ -17,15 +17,8 @@ type Member {
     years: String
 }
 
-type BandsResult {
-    items: [Band],
-    total: Int,
-    limit: Int,
-    offset: Int,
-}
-
 extend type Query {
-    bands: BandsResult,
+    bands: [Band],
     band(id: ID!): Band,
 }
 

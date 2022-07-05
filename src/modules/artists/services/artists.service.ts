@@ -9,7 +9,8 @@ class ArtistsService extends RESTDataSource {
 
   async getArtists() {
     try {
-      return await this.get('');
+      const res = await this.get('');
+      return res.items;
     } catch (e) {
       console.log(e);
     }
