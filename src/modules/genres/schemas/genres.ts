@@ -10,15 +10,15 @@ type Genre {
     year: Int,
 }
 
-type GenresResult {
-    items: [Genre],
-    total: Int,
-    limit: Int,
-    offset: Int,
-}
+#type GenresResult {
+#    items: [Genre],
+#    total: Int,
+#    limit: Int,
+#    offset: Int,
+#}
 
 extend type Query {
-genres: GenresResult,
+genres: [Genre],
 genre(id: ID!): Genre,
 }
 

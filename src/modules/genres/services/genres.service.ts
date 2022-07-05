@@ -9,7 +9,8 @@ class GenresService extends RESTDataSource {
 
   async getGenres() {
     try {
-      return await this.get('');
+      const res = await this.get('');
+      return res.items;
     } catch (e) {
       console.log(e);
     }
