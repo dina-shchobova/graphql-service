@@ -14,26 +14,15 @@ const usersResolver = {
   },
 
   Mutation: {
-    registerUser: (_, registerUserInput, { dataSources }) => {
+    registerUser: (_, registerUserInput, {dataSources}) => {
       try {
-        const data = dataSources.usersService.registerUser(registerUserInput);
-        return {
-          code: 200,
-          success: true,
-          message: "User successfully registered",
-          user: data,
-        }
+        return dataSources.usersService.registerUser(registerUserInput);
       } catch (e) {
-        return {
-          code: e.extension.response.status,
-          success: false,
-          message: e.extension.response.body,
-          user: null,
-        }
+        console.log(e);
       }
     }
   }
 
 }
 
-export { usersResolver };
+export {usersResolver};
