@@ -1,7 +1,12 @@
 const albumsResolver = {
   Query: {
     albums: (_, { pagination }, { dataSources }) => {
-      return dataSources.albumsService.getAlbums(pagination.limit, pagination.offset);
+      if (pagination && pagination.limit && (pagination.offset || pagination.offset === 0)) {
+        return dataSources.albumsService.getAlbums(pagination.limit, pagination.offset);
+      } else {
+        return dataSources.albumsService.getAlbums();
+      }
+
     },
     album: ( _, {id}, {dataSources}) => {
       return dataSources.albumsService.getAlbum(id);

@@ -7,7 +7,7 @@ class BandsService extends RESTDataSource {
     this.baseURL = process.env.BANDS_URL;
   }
 
-  async getBands(limit: number, offset: number) {
+  async getBands(limit: number = 5, offset: number = 0) {
     try {
       const res = await this.get(`/?limit=${limit}&offset=${offset}`);
       return res.items;

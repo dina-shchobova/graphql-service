@@ -1,7 +1,12 @@
 const bandsResolver = {
     Query: {
         bands: (_, { pagination }, { dataSources }) => {
-            return dataSources.bandsService.getBands(pagination.limit, pagination.offset);
+            if (pagination && pagination.limit && (pagination.offset || pagination.offset === 0)) {
+                return dataSources.bandsService.getBands(pagination.limit, pagination.offset);
+            } else {
+                return dataSources.bandsService.getBands();
+            }
+
         },
         band: ( _, { id }, {dataSources}) => {
             return dataSources.bandsService.getBand(id);

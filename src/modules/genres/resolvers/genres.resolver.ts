@@ -1,7 +1,12 @@
 const genresResolver = {
   Query: {
     genres: (_, { pagination }, { dataSources }) => {
-      return dataSources.genresService.getGenres(pagination.limit, pagination.offset);
+      if (pagination && pagination.limit && (pagination.offset || pagination.offset === 0)) {
+        return dataSources.genresService.getGenres(pagination.limit, pagination.offset);
+      } else {
+        return dataSources.genresService.getGenres();
+      }
+
     },
     genre: ( _, {id}, {dataSources}) => {
       return dataSources.genresService.getGenre(id);

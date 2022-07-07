@@ -7,7 +7,7 @@ class TracksService extends RESTDataSource {
     this.baseURL = process.env.TRACKS_URL;
   }
 
-  async getTracks(limit: number, offset: number) {
+  async getTracks(limit: number = 5, offset: number = 0) {
     try {
       const res = await this.get(`/?limit=${limit}&offset=${offset}`);
       return res.items;

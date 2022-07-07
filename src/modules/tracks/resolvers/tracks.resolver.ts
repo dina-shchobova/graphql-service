@@ -1,7 +1,11 @@
 const tracksResolver = {
   Query: {
     tracks: (_, { pagination }, { dataSources }) => {
-      return dataSources.tracksService.getTracks(pagination.limit, pagination.offset);
+      if (pagination && pagination.limit && (pagination.offset || pagination.offset === 0)) {
+        return dataSources.tracksService.getTracks(pagination.limit, pagination.offset);
+      } else {
+        return dataSources.tracksService.getTracks();
+      }
     },
     track: ( _, {id}, {dataSources}) => {
       return dataSources.tracksService.getTrack(id);

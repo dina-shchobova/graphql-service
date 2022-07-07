@@ -1,7 +1,11 @@
 const artistsResolver = {
   Query: {
     artists: (_, { pagination }, { dataSources }) => {
-      return dataSources.artistsService.getArtists(pagination.limit, pagination.offset);
+      if (pagination && pagination.limit && (pagination.offset || pagination.offset === 0)) {
+        return dataSources.artistsService.getArtists(pagination.limit, pagination.offset);
+      } else {
+        return dataSources.artistsService.getArtists();
+      }
     },
     artist: ( _, {id}, {dataSources}) => {
       return dataSources.artistsService.getArtist(id);

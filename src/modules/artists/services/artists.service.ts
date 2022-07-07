@@ -7,7 +7,7 @@ class ArtistsService extends RESTDataSource {
     this.baseURL = process.env.ARTISTS_URL;
   }
 
-  async getArtists(limit: number, offset: number) {
+  async getArtists(limit: number = 5, offset: number = 0) {
     try {
       const res = await this.get(`/?limit=${limit}&offset=${offset}`);
       return res.items;

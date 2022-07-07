@@ -7,7 +7,7 @@ class GenresService extends RESTDataSource {
     this.baseURL = process.env.GENRES_URL;
   }
 
-  async getGenres(limit: number, offset: number) {
+  async getGenres(limit: number = 5, offset: number = 0) {
     try {
       const res = await this.get(`/?limit=${limit}&offset=${offset}`);
       return res.items;
