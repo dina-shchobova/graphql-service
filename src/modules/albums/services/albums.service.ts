@@ -7,9 +7,9 @@ class AlbumsService extends RESTDataSource {
     this.baseURL = process.env.ALBUMS_URL;
   }
 
-  async getAlbums() {
+  async getAlbums(limit: number, offset: number) {
     try {
-      const res = await this.get('');
+      const res = await this.get(`/?limit=${limit}&offset=${offset}`);
       return res.items;
     } catch (e) {
       console.log(e);

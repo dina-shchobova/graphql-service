@@ -1,45 +1,43 @@
-import { gql } from 'apollo-server';
+import {gql} from 'apollo-server';
 
 const typeDefs = gql`
 
-type Genre {
-    id: ID!,
-    name: String,
-    description: String,
-    country: String,
-    year: Int,
-}
+    type Genre {
+        id: ID!,
+        name: String,
+        description: String,
+        country: String,
+        year: Int,
+    }
 
-#type GenresResult {
-#    items: [Genre],
-#    total: Int,
-#    limit: Int,
-#    offset: Int,
-#}
+    input PaginationInput {
+        limit: Int
+        offset: Int
+    }
 
-extend type Query {
-genres: [Genre],
-genre(id: ID!): Genre,
-}
+    extend type Query {
+        genres(pagination: PaginationInput): [Genre],
+        genre(id: ID!): Genre,
+    }
 
-input CreateGenreInput {
-name: String,
-description: String,
-country: String,
-year: Int,
-}
+    input GenresInput {
+        name: String,
+        description: String,
+        country: String,
+        year: Int,
+    }
 
-type CreateGenreResponse {
-    code: Int!
-    success: Boolean!
-    message: String!
-    genre: Genre
-}
+    type CreateGenreResponse {
+        code: Int!
+        success: Boolean!
+        message: String!
+        genre: Genre
+    }
 
-extend type Mutation {
-    createGenre(createGenreInput: CreateGenreInput): CreateGenreResponse!  
-}
+    extend type Mutation {
+        createGenre(genresInput: GenresInput): CreateGenreResponse!
+    }
 
 `;
 
-export { typeDefs };
+export {typeDefs};

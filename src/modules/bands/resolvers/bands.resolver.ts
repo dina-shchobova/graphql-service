@@ -1,7 +1,7 @@
 const bandsResolver = {
     Query: {
-        bands: (_, __, { dataSources }) => {
-            return dataSources.bandsService.getBands();
+        bands: (_, { pagination }, { dataSources }) => {
+            return dataSources.bandsService.getBands(pagination.limit, pagination.offset);
         },
         band: ( _, { id }, {dataSources}) => {
             return dataSources.bandsService.getBand(id);

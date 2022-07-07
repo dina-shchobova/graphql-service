@@ -1,7 +1,7 @@
 const genresResolver = {
   Query: {
-    genres: (_, __, { dataSources }) => {
-      return dataSources.genresService.getGenres();
+    genres: (_, { pagination }, { dataSources }) => {
+      return dataSources.genresService.getGenres(pagination.limit, pagination.offset);
     },
     genre: ( _, {id}, {dataSources}) => {
       return dataSources.genresService.getGenre(id);
@@ -13,9 +13,9 @@ const genresResolver = {
   },
 
   Mutation: {
-    createGenre: (_, createGenreInput, { dataSources }) => {
+    createGenre: (_, genreInput, { dataSources }) => {
       try {
-        const data = dataSources.genresService.createGenre(createGenreInput);
+        const data = dataSources.genresService.createGenre(genreInput);
         console.log(data)
         return {
           code: 200,

@@ -18,7 +18,7 @@ type Member {
 }
 
 extend type Query {
-    bands: [Band],
+    bands(pagination: PaginationInput): [Band],
     band(id: ID!): Band,
 }
 

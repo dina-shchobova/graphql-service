@@ -14,7 +14,7 @@ type Album {
 }
 
 extend type Query {
-    albums: [Album]
+    albums(pagination: PaginationInput): [Album]
     album(id: ID!): Album
 }
 

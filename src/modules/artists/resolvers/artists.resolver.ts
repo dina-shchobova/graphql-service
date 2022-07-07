@@ -1,7 +1,7 @@
 const artistsResolver = {
   Query: {
-    artists: (_, __, { dataSources }) => {
-      return dataSources.artistsService.getArtists();
+    artists: (_, { pagination }, { dataSources }) => {
+      return dataSources.artistsService.getArtists(pagination.limit, pagination.offset);
     },
     artist: ( _, {id}, {dataSources}) => {
       return dataSources.artistsService.getArtist(id);

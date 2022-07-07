@@ -14,7 +14,7 @@ const typeDefs = gql`
     }
 
     extend type Query {
-        tracks: [Track],
+        tracks(pagination: PaginationInput): [Track],
         track(id: ID!): Track,
     }
 

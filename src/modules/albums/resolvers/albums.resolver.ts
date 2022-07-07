@@ -1,7 +1,7 @@
 const albumsResolver = {
   Query: {
-    albums: (_, __, { dataSources }) => {
-      return dataSources.albumsService.getAlbums();
+    albums: (_, { pagination }, { dataSources }) => {
+      return dataSources.albumsService.getAlbums(pagination.limit, pagination.offset);
     },
     album: ( _, {id}, {dataSources}) => {
       return dataSources.albumsService.getAlbum(id);

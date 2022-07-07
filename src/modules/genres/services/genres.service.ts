@@ -7,14 +7,13 @@ class GenresService extends RESTDataSource {
     this.baseURL = process.env.GENRES_URL;
   }
 
-  async getGenres() {
+  async getGenres(limit: number, offset: number) {
     try {
-      const res = await this.get('');
+      const res = await this.get(`/?limit=${limit}&offset=${offset}`);
       return res.items;
     } catch (e) {
       console.log(e);
     }
-
   }
 
   async getGenre(id: string) {
@@ -25,9 +24,9 @@ class GenresService extends RESTDataSource {
     }
   }
 
-  async createGenre(createGenreInput) {
+  async createGenre(genreInput) {
     try {
-      return await this.post(``, createGenreInput)
+      return await this.post(``, genreInput)
     } catch (e) {
       console.log(e);
     }

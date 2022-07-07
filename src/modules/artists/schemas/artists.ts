@@ -15,7 +15,7 @@ type Artist {
 }
 
 extend type Query {
-    artists: [Artist],
+    artists(pagination: PaginationInput): [Artist],
     artist(id: ID!): Artist,
 }
 
