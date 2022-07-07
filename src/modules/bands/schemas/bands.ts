@@ -36,8 +36,14 @@ input CreateBandInput {
     genresIds: [String]
 }
 
+type DeletedArtist {
+    acknowledged: Boolean
+    deletedCount: Int
+}
+
 extend type Mutation {
     createBand(createBandInput: CreateBandInput): Band
+    deleteBand(id: ID!): DeletedArtist
 }
 
 `;

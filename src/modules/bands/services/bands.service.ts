@@ -30,7 +30,15 @@ class BandsService extends RESTDataSource {
 
   async createBand(createBandInput) {
     try {
-      return await this.post(``, createBandInput)
+      return await this.post(``, createBandInput);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async deleteBand(id: string) {
+    try {
+      return await this.delete(`/${id}`);
     } catch (e) {
       console.log(e);
     }

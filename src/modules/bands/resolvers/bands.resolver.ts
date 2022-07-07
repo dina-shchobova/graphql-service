@@ -31,7 +31,14 @@ const bandsResolver = {
             } catch (e) {
                 return null;
             }
-        }
+        },
+        deleteBand: (_, {id}, { dataSources }) => {
+            try {
+                return dataSources.bandsService.deleteBand(id);
+            } catch (e) {
+                return null;
+            }
+        },
     }
 }
 
