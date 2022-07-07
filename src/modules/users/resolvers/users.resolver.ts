@@ -14,7 +14,7 @@ const usersResolver = {
   },
 
   Mutation: {
-    registerUser: (_, registerUserInput, {dataSources}) => {
+    registerUser: (_, {registerUserInput}, {dataSources}) => {
       try {
         return dataSources.usersService.registerUser(registerUserInput);
       } catch (e) {

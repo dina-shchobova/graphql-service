@@ -32,7 +32,7 @@ class UsersService extends RESTDataSource {
 
   async registerUser(registerUserInput) {
     try {
-      return await this.post(`/register`, registerUserInput.registerUserInput);
+      return await this.post(`/register`, registerUserInput);
     } catch (e) {
       console.log(e);
     }
