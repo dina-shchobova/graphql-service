@@ -36,15 +36,8 @@ input CreateBandInput {
     genresIds: [String]
 }
 
-type CreateBandResponse {
-    code: Int!
-    success: Boolean!
-    message: String!
-    bands: Band
-}
-
 extend type Mutation {
-    createBand(createBandInput: CreateBandInput): CreateBandResponse!
+    createBand(createBandInput: CreateBandInput): Band
 }
 
 `;

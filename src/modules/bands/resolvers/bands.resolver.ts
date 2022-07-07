@@ -25,23 +25,11 @@ const bandsResolver = {
     },
 
     Mutation: {
-        createBand: (_, createBandInput, { dataSources }) => {
+        createBand: (_, {createBandInput}, { dataSources }) => {
             try {
-                const data = dataSources.bandsService.createBand(createBandInput);
-                console.log(data)
-                return {
-                    code: 200,
-                    success: true,
-                    message: "Band successfully created",
-                    band: data.band,
-                }
+                return dataSources.bandsService.createBand(createBandInput);
             } catch (e) {
-                return {
-                    code: e.extension.response.status,
-                    success: false,
-                    message: e.extension.response.body,
-                    band: null,
-                }
+                return null;
             }
         }
     }

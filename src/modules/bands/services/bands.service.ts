@@ -7,6 +7,10 @@ class BandsService extends RESTDataSource {
     this.baseURL = process.env.BANDS_URL;
   }
 
+  willSendRequest(request) {
+    request.headers.set('Authorization', `Bearer ${this.context.token}`);
+  }
+
   async getBands(limit: number = 5, offset: number = 0) {
     try {
       const res = await this.get(`/?limit=${limit}&offset=${offset}`);
