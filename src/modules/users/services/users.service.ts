@@ -8,7 +8,7 @@ class UsersService extends RESTDataSource {
   }
 
   willSendRequest(request) {
-    request.headers.set('Authorization', this.context.token);
+    request.headers.set('Authorization', `Bearer ${this.context.token}`);
   }
 
   async getUser(id: string) {
@@ -24,7 +24,7 @@ class UsersService extends RESTDataSource {
        const res = await this.post(`/login`, {
         email, password
       });
-       return res.jwt;
+      return res.jwt;
     } catch (e) {
       console.log(e);
     }
