@@ -24,10 +24,9 @@ const server = new ApolloServer({
       albumsService: new AlbumsService(),
     }
   },
-  context: async ({ req }) => {
+  context: ({ req }) => {
     const token = req.headers.authorization || '';
-    console.log(token);
-    return token;
+    return { token };
   },
 });
 
