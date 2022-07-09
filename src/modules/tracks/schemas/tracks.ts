@@ -1,4 +1,4 @@
-import { gql } from 'apollo-server';
+import {gql} from 'apollo-server';
 
 const typeDefs = gql`
 
@@ -18,7 +18,32 @@ const typeDefs = gql`
         track(id: ID!): Track,
     }
 
+    input CreateTrackInput {
+        title: String!
+        albumId: ID
+        artistsIds: [ID]
+        bandsIds: [ID]
+        duration: Int
+        released: Int
+        genresIds: [ID]
+    }
+
+    input UpdateTrackInput {
+        title: String
+        albumId: ID
+        artistsIds: [ID]
+        bandsIds: [ID]
+        duration: Int
+        released: Int
+        genresIds: [ID]
+    }
+
+    extend type Mutation {
+        createTrack(createTrackInput: CreateTrackInput): Track
+        deleteTrack(id: ID!): ResponseDeleteMutation
+        updateTrack(id: ID!, updateTrackInput: UpdateTrackInput): Track
+    }
 `;
 
-export { typeDefs };
+export {typeDefs};
 

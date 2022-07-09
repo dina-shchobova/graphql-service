@@ -7,6 +7,10 @@ class TracksService extends RESTDataSource {
     this.baseURL = process.env.TRACKS_URL;
   }
 
+  willSendRequest(request) {
+    request.headers.set('Authorization', `Bearer ${this.context.token}`);
+  }
+
   async getTracks(limit: number = 5, offset: number = 0) {
     try {
       const res = await this.get(`/?limit=${limit}&offset=${offset}`);
@@ -19,6 +23,30 @@ class TracksService extends RESTDataSource {
   async getTrack(id: string) {
     try {
       return this.get(`/${id}`);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async createTrack(createTrackInput) {
+    try {
+      return await this.post(``, createTrackInput);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async deleteTrack(id: string) {
+    try {
+      return await this.delete(`/${id}`);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async updateTrack(id, updateTrackInput) {
+    try {
+      return await this.put(`/${id}`, updateTrackInput);
     } catch (e) {
       console.log(e);
     }
