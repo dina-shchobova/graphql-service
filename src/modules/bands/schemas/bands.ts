@@ -36,11 +36,6 @@ input CreateBandInput {
     genresIds: [String]
 }
 
-type DeletedArtist {
-    acknowledged: Boolean
-    deletedCount: Int
-}
-
 input UpdateBandInput {
     name: String
     origin: String
@@ -51,7 +46,7 @@ input UpdateBandInput {
 
 extend type Mutation {
     createBand(createBandInput: CreateBandInput): Band
-    deleteBand(id: ID!): DeletedArtist
+    deleteBand(id: ID!): ResponseDeleteMutation
     updateBand(id: ID!, updateBandInput: UpdateBandInput): Band
 }
 
