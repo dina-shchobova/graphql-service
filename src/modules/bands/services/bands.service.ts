@@ -1,4 +1,4 @@
-import { RESTDataSource } from "apollo-datasource-rest";
+import {RESTDataSource} from "apollo-datasource-rest";
 import "dotenv/config";
 
 class BandsService extends RESTDataSource {
@@ -53,4 +53,4 @@ class BandsService extends RESTDataSource {
   }
 }
 
-export { BandsService };
+export {BandsService};
