@@ -1,6 +1,6 @@
 const genresResolver = {
   Query: {
-    genres: (_, { pagination }, { dataSources }) => {
+    genres: (_, {pagination}, {dataSources}) => {
       if (pagination && pagination.limit && (pagination.offset || pagination.offset === 0)) {
         return dataSources.genresService.getGenres(pagination.limit, pagination.offset);
       } else {
@@ -8,7 +8,7 @@ const genresResolver = {
       }
 
     },
-    genre: ( _, {id}, {dataSources}) => {
+    genre: (_, {id}, {dataSources}) => {
       return dataSources.genresService.getGenre(id);
     }
   },
@@ -18,26 +18,30 @@ const genresResolver = {
   },
 
   Mutation: {
-    createGenre: (_, genreInput, { dataSources }) => {
+    createGenre: (_, {genresInput}, {dataSources}) => {
       try {
-        const data = dataSources.genresService.createGenre(genreInput);
-        console.log(data)
-        return {
-          code: 200,
-          success: true,
-          message: "Genre successfully created",
-          genre: data.genre,
-        }
+        return dataSources.genresService.createGenre(genresInput);
       } catch (e) {
-        return {
-          code: e.extension.response.status,
-          success: false,
-          message: e.extension.response.body,
-          genre: null,
-        }
+        return null;
       }
-    }
+    },
+
+    deleteGenre: (_, {id}, {dataSources}) => {
+      try {
+        return dataSources.genresService.deleteGenre(id);
+      } catch (e) {
+        return null;
+      }
+    },
+
+    updateGenre: (_, {id, genresInput}, {dataSources}) => {
+      try {
+        return dataSources.genresService.updateGenre(id, genresInput);
+      } catch (e) {
+        return null;
+      }
+    },
   }
 }
 
-export { genresResolver };
+export {genresResolver};

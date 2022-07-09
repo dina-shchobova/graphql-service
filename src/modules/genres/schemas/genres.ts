@@ -14,6 +14,11 @@ const typeDefs = gql`
         limit: Int
         offset: Int
     }
+    
+    type ResponseDeleteMutation {
+        acknowledged: Boolean
+        deletedCount: Int
+    }
 
     extend type Query {
         genres(pagination: PaginationInput): [Genre],
@@ -27,15 +32,10 @@ const typeDefs = gql`
         year: Int,
     }
 
-    type CreateGenreResponse {
-        code: Int!
-        success: Boolean!
-        message: String!
-        genre: Genre
-    }
-
     extend type Mutation {
-        createGenre(genresInput: GenresInput): CreateGenreResponse!
+        createGenre(genresInput: GenresInput): Genre
+        deleteGenre(id: ID!): ResponseDeleteMutation
+        updateGenre(id: ID!, genresInput: GenresInput): Genre
     }
 
 `;
