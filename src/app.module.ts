@@ -4,6 +4,7 @@ import { artistsResolver } from './modules/artists/resolvers/artists.resolver';
 import {bandsResolver} from "./modules/bands/resolvers/bands.resolver";
 import {tracksResolver} from "./modules/tracks/resolvers/tracks.resolver";
 import {albumsResolver} from "./modules/albums/resolvers/albums.resolver";
+import {favouritesResolver} from "./modules/favourites/resolvers/favourites.resolver";
 
 const resolvers = [
   usersResolver,
@@ -12,6 +13,7 @@ const resolvers = [
   bandsResolver,
   tracksResolver,
   albumsResolver,
+  favouritesResolver
 ]
 
 export { resolvers }

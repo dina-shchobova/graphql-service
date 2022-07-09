@@ -8,6 +8,7 @@ import {ArtistsService} from "./modules/artists/services/artists.service";
 import {BandsService} from "./modules/bands/services/bands.service";
 import {TracksService} from "./modules/tracks/services/tracks.service";
 import {AlbumsService} from "./modules/albums/services/albums.service";
+import {FavouritesService} from "./modules/favourites/services/favourites.service";
 
 const PORT = process.env.PORT || 3000;
 
@@ -22,6 +23,7 @@ const server = new ApolloServer({
       bandsService: new BandsService(),
       tracksService: new TracksService(),
       albumsService: new AlbumsService(),
+      favouritesService: new FavouritesService(),
     }
   },
   context: ({ req }) => {
