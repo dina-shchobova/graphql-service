@@ -41,9 +41,18 @@ type DeletedArtist {
     deletedCount: Int
 }
 
+input UpdateBandInput {
+    name: String
+    origin: String
+    members: [MemberInput]
+    website: String
+    genresIds: [String]
+}
+
 extend type Mutation {
     createBand(createBandInput: CreateBandInput): Band
     deleteBand(id: ID!): DeletedArtist
+    updateBand(id: ID!, updateBandInput: UpdateBandInput): Band
 }
 
 `;

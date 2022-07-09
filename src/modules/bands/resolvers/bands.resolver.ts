@@ -39,6 +39,13 @@ const bandsResolver = {
                 return null;
             }
         },
+        updateBand: (_, {id, updateBandInput}, { dataSources }) => {
+            try {
+                return dataSources.bandsService.updateBand(id, updateBandInput);
+            } catch (e) {
+                return null;
+            }
+        },
     }
 }
 

@@ -43,6 +43,14 @@ class BandsService extends RESTDataSource {
       console.log(e);
     }
   }
+
+  async updateBand(id, updateBandInput) {
+    try {
+      return await this.put(`/${id}`, updateBandInput);
+    } catch (e) {
+      console.log(e);
+    }
+  }
 }
 
 export { BandsService };
