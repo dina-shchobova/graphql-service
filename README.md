@@ -63,5 +63,6 @@ There are two modes of running application (development and production).
 Как вариант, лучше проверять мутации на удаление последними.
 2. В альбоме присутствует поле image: string. Реализовывать его работу не нужно. 
 Также ссылка на скриншот со словами автора таска: https://clip2net.com/s/4g7aUEL
+3. Формат данных "birthDate" в Artist - строка вида "01/12/2007", формат данных "released" в Track - число вид 01122007
 
 
