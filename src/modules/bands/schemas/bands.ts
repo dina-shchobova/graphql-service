@@ -12,9 +12,12 @@ const typeDefs = gql`
     }
 
     type Member {
-        artist: String
+        artist: ID!
+        firstName: String
+        secondName: String
+        middleName: String
         instrument: String
-        years: String
+        years: [String]
     }
 
     extend type Query {
@@ -23,15 +26,15 @@ const typeDefs = gql`
     }
 
     input MemberInput {
-        artist: String
+        artist: ID!
         instrument: String
-        years: String
+        years: [String]
     }
 
     input CreateBandInput {
         name: String!
         origin: String
-        members: [MemberInput]
+        members: [MemberInput] # membersIds ?
         website: String
         genresIds: [String]
     }
@@ -39,7 +42,7 @@ const typeDefs = gql`
     input UpdateBandInput {
         name: String
         origin: String
-        members: [MemberInput]
+        members: [MemberInput]  # membersIds ?
         website: String
         genresIds: [String]
     }

@@ -21,6 +21,18 @@ const bandsResolver = {
         genres.push(dataSources.genresService.getGenre(id));
       })
       return genres;
+    },
+    members: async ({members}, _, {dataSources}) => {
+      return (await Promise.all(members.map(async member => {
+        return dataSources.artistsService.getArtist(member.artist);
+      }))).map((artist, index) => ({
+        artist: members[index].artist,
+        firstName: artist.firstName,
+        secondName: artist.secondName,
+        middleName: artist.middleName,
+        instrument: members[index].instrument,
+        years: members[index].years
+      }))
     }
   },
 
