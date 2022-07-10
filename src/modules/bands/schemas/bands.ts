@@ -34,7 +34,7 @@ const typeDefs = gql`
     input CreateBandInput {
         name: String!
         origin: String
-        members: [MemberInput] # membersIds ?
+        members: [MemberInput]
         website: String
         genresIds: [String]
     }
@@ -42,7 +42,7 @@ const typeDefs = gql`
     input UpdateBandInput {
         name: String
         origin: String
-        members: [MemberInput]  # membersIds ?
+        members: [MemberInput]
         website: String
         genresIds: [String]
     }
